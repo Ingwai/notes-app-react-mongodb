@@ -34,3 +34,12 @@
 .note button.delete:hover {
 	background-color: rgb(223, 57, 45);
 }
+
+.note .btn-modal {
+	background-color: #000;
+	margin-left: 1rem;
+}
+
+.note .btn-modal:hover {
+	background-color: rgba(71, 70, 70, 0.6);
+}
