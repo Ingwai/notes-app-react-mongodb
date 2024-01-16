@@ -30,7 +30,7 @@ export default Note;
 Note.propTypes = {
 	title: PropTypes.string.isRequired,
 	body: PropTypes.string.isRequired,
-	_id: PropTypes.string,
+	_id: PropTypes.string.isRequired,
 	onDelete: PropTypes.func,
 	onEdit: PropTypes.func,
 };

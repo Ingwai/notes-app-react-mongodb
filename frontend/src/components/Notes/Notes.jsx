@@ -5,6 +5,8 @@ import NewNote from '../NewNote/NewNote';
 import Modal from 'react-modal';
 import EditNote from '../EditNote/EditNote';
 import axios from '../../axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const notes = [];
 
@@ -18,7 +20,6 @@ const Notes = () => {
 		const fetchNotes = async () => {
 			const response = await axios.get('/notes');
 			const notes = await response.data;
-			console.log(notes);
 			setUserNotes(notes);
 		};
 		fetchNotes();
@@ -30,10 +31,12 @@ const Notes = () => {
 			await axios.post('/notes', note);
 			const res = await axios.get('/notes');
 			const newNote = await res.data;
+
 			// add to frontend
 			setUserNotes(newNote);
 		} catch (err) {
-			console.log(err);
+			toast.error('Something went wrong', { autoClose: 2000, pauseOnHover: true, hideProgressBar: false });
+			console.log(err.response);
 		}
 
 		setShowForm(false);
@@ -67,6 +70,7 @@ const Notes = () => {
 
 	return (
 		<main>
+			<ToastContainer />
 			<p>Moje notatki:</p>
 
 			<button onClick={() => setShowForm(!showForm)}>New note</button>

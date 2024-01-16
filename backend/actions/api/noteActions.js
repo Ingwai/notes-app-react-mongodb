@@ -30,7 +30,7 @@ class NoteActions {
 		const body = req.body.body;
 
 		try {
-			const note = new Note({ title, body });
+			note = new Note({ title, body });
 			await note.save();
 		} catch (error) {
 			console.log(error);
